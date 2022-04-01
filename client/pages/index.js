@@ -16,7 +16,7 @@ const index = () => {
                             <Image src="images/svg-1.svg"/>
                         </Grid.Col>
                         <Grid.Col md={6} lg={7}>
-                            <Text>A True DAO</Text>
+                            <Text transform="uppercase" color="blue">A True DAO</Text>
                             <Title>Building The Future</Title>
                             <Text>Invest in the future by contributing to an organization which puts the people's needs first.</Text>
                             <br/>
@@ -28,7 +28,7 @@ const index = () => {
                             <Image src="images/svg-2.svg"/>
                         </Grid.Col>
                         <Grid.Col md={6} lg={7}>
-                            <Text>Open Source</Text>
+                            <Text transform="uppercase" color="blue">Open Source</Text>
                             <Title>Know Everything</Title>
                             <Text>Fully transparent and open source organization dedicated to your security and privacy.</Text>
                             <br/>
@@ -81,7 +81,7 @@ const index = () => {
                             <Image src="images/svg-4.svg"/>
                         </Grid.Col>
                         <Grid.Col md={6} lg={7}>
-                            <Text>Web 3.0</Text>
+                            <Text transform="uppercase" color="blue">Web 3.0</Text>
                             <Title>Learn Web 3.0 With The Community</Title>
                             <Text>See the power of Web 3.0 in action with the Ultimatum community and decentralized development platform.</Text>
                             <br/>
