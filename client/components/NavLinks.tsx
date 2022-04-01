@@ -66,7 +66,7 @@ export function APILinks() {
 const Pagedata = [
     { icon: <Home size={16} />, color: 'blue', label: 'Home', href: '/' },
     { icon: <AlertCircle size={16} />, color: 'teal', label: 'About', href: 'about' },
-    { icon: <Messages size={16} />, color: 'violet', label: 'Forum', href: 'forum' },
+    { icon: <Messages size={16} />, color: 'violet', label: 'Forum (Coming soon)', href: 'forum' },
   ];
   
   export function PageLinks() {
