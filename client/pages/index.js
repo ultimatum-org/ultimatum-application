@@ -32,7 +32,7 @@ const Home = () => {
                             <Title>Know Everything</Title>
                             <Text>Fully transparent and open source organization dedicated to your security and privacy.</Text>
                             <br/>
-                            <Button>View The Code</Button>
+                            <Button>Test change</Button>
                         </Grid.Col>
                     </Grid>
                     <Grid style={{paddingTop: '15vh'}}>
