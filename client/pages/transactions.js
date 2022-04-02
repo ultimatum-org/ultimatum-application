@@ -2,7 +2,7 @@ import Meta from '../components/Meta'
 import { TextInput, Checkbox, Button, Group, Box, Text, Title, Accordion } from '@mantine/core';
 import { useForm } from '@mantine/form';
 
-const transactions = () => {
+const Transactions = () => {
   const createTransactionForm = useForm({
     initialValues: {
       senderAddress: '',
@@ -105,4 +105,4 @@ const transactions = () => {
   );
 }
 
-export default transactions
+export default Transactions

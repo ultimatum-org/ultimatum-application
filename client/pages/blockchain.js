@@ -3,7 +3,7 @@ import { TextInput, Checkbox, Button, Group, Box, Text, Title, Accordion } from 
 import { ThemeIcon, Wallet, Exchange, Apps, Download, Home, AlertCircle, Messages } from 'tabler-icons-react';
 import { useForm } from '@mantine/form';
 
-const blockchain = () => {
+const Blockchain = () => {
   return (
     <>
         <Box sx={{ maxWidth: '75vw' }} mx="auto">
@@ -28,4 +28,4 @@ const blockchain = () => {
   );
 }
 
-export default blockchain
+export default Blockchain

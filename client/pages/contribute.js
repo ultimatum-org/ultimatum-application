@@ -4,7 +4,7 @@ import { ArrowNarrowUp, ArrowNarrowDown } from 'tabler-icons-react'
 import { useForm } from '@mantine/form';
 import Contribution from '../components/Contribution'
 
-const contribute = () => {
+const Contribute = () => {
     const theme = useMantineTheme();
 
     const secondaryColor = theme.colorScheme === 'dark'
@@ -102,4 +102,4 @@ const contribute = () => {
   );
 }
 
-export default contribute
+export default Contribute

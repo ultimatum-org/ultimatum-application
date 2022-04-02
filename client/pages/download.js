@@ -1,7 +1,7 @@
 import {ThemeIcon, Button, Title, Text, Box, Group, Image} from '@mantine/core'
 import { BrandGithub, BrandWindows, BrandDebian, BrandApple } from 'tabler-icons-react';
 
-const download = () => {
+const Download = () => {
   return (
     <>
         <Group position="center" direction="column" spacing="lg" style={{paddingTop: '15vh'}}>
@@ -40,4 +40,4 @@ const download = () => {
   )
 }
 
-export default download
+export default Download

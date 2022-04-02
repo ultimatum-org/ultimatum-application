@@ -2,7 +2,7 @@ import Meta from '../components/Meta'
 import { TextInput, Checkbox, Button, Group, Box, Text, Title } from '@mantine/core';
 import { useForm } from '@mantine/form';
 
-const wallet = () => {
+const Wallet = () => {
   const form = useForm({
     initialValues: {
       walletAddress: '',
@@ -41,4 +41,4 @@ const wallet = () => {
   );
 }
 
-export default wallet
+export default Wallet

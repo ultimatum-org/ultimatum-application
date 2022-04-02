@@ -1,7 +1,7 @@
 import { Title, Text, Button, Group, Image, Box, Container, Grid, Blockquote, List, Timeline } from '@mantine/core'
 import { BrandGithub, GitBranch, GitCommit, GitPullRequest, MessageDots, Checks, Cash } from 'tabler-icons-react';
 
-const index = () => {
+const About = () => {
     return (
         <>
             <Box sx={{ maxWidth: '75vw' }} mx="auto">
@@ -14,11 +14,11 @@ const index = () => {
                         </Blockquote>
                         <Text>With you! We believe that for a community to truly love the platform they use, they need to be able to change it, to shape it! We all know the dislike button incident right? Imagine if before removing dislikes, the community got the choice to vote with their opinion! Ultimatum helps you build applications which reward the community for contributing their ideas, opinions and programming skills.</Text>
                         <Title>The Details</Title>
-                        <Text>In order to achieve this, Ultimatum has been created. Ultimatum is a development platform which allows your community to submit their ideas for review by the community. An individual's voting power is determined by their past contributions. Essentially, by contributing, individual's can gain an ever so slight advantage on what happens on the platform. Don't worry though, Monopolies don't exist here. In order to encourage community input, the community will be rewarded for their ideas, opinions and programming skills with the Ultimatum currency [TOKEN NAME HERE].</Text>
+                        <Text>In order to achieve this, Ultimatum has been created. Ultimatum is a development platform which allows your community to submit their ideas for review by the community. An individual&apos;s voting power is determined by their past contributions. Essentially, by contributing, individual&apos;s can gain an ever so slight advantage on what happens on the platform. Don&apos;t worry though, Monopolies don&apos;t exist here. In order to encourage community input, the community will be rewarded for their ideas, opinions and programming skills with the Ultimatum currency [TOKEN NAME HERE].</Text>
                         <Blockquote cite="– You, again.">
                             Oh god. Another blockchain project.
                         </Blockquote>
-                        <Text>We know... We know. But hear us out. In order to ensure a fully decentralized, community based system, the blockchain architecture is the obvious choice. Our platform was never, is not, and will never be a shit coin for you to pump and dump like there's no tomorrow. [TOKEN NAME HERE] works by having holders enter their desired selling price, and having buyers enter their desired purchase price. Ultimately, the price of [TOKEN NAME HERE] is determined by the community.</Text>
+                        <Text>We know... We know. But hear us out. In order to ensure a fully decentralized, community based system, the blockchain architecture is the obvious choice. Our platform was never, is not, and will never be a shit coin for you to pump and dump like there&apos;s no tomorrow. [TOKEN NAME HERE] works by having holders enter their desired selling price, and having buyers enter their desired purchase price. Ultimately, the price of [TOKEN NAME HERE] is determined by the community.</Text>
                         <Title>Logistics</Title>
                         <Text>Ultimatum ultimately has a circular structure, with a few branches of course.</Text>
                         <List>
@@ -36,7 +36,7 @@ const index = () => {
                             </List>
                             <List.Item>Programmers</List.Item>
                             <List withPadding>
-                                <List.Item>The people who implement the community's ideas</List.Item>
+                                <List.Item>The people who implement the community&apos;s ideas</List.Item>
                                 <List.Item>Programmer reward: [PROGRAMMER REWARD]</List.Item>
                             </List>
                             <List.Item>Contractors</List.Item>
@@ -46,7 +46,7 @@ const index = () => {
                             </List>
                             <List.Item>Voters</List.Item>
                             <List withPadding>
-                                <List.Item>The people who vote on contractor's ideas</List.Item>
+                                <List.Item>The people who vote on contractor&apos;s ideas</List.Item>
                                 <List.Item>Voter weight: Determined for each individual</List.Item>
                             </List>
                             <List.Item>Miners</List.Item>
@@ -62,7 +62,7 @@ const index = () => {
                                 <Text color="dimmed" size="sm">John Doe suggests the dislike button be removed from the platform</Text>
                             </Timeline.Item>
                             <Timeline.Item bullet={<GitCommit size={12} />} title="Voting">
-                                <Text color="dimmed" size="sm">The community votes that this is a good idea (it isn't)</Text>
+                                <Text color="dimmed" size="sm">The community votes that this is a good idea (it isn&apos;t)</Text>
                             </Timeline.Item>
                             <Timeline.Item title="Programming" bullet={<GitPullRequest size={12} />}>
                                 <Text color="dimmed" size="sm">Jane Doe alters the source code to remove the dislike button</Text>
@@ -87,4 +87,4 @@ const index = () => {
     )
 }
 
-export default index
+export default About

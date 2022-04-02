@@ -22,7 +22,7 @@ function MainLink({ icon, color, label, href }: MainLinkProps) {
       <style>
           {css}
       </style>
-        <Link href={`/${href}`}>
+        <Link href={`/${href}`} passHref>
             <UnstyledButton
             sx={(theme) => ({
                 display: 'block',
