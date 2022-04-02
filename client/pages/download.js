@@ -6,9 +6,9 @@ const Download = () => {
     <>
         <Group position="center" direction="column" spacing="lg" style={{paddingTop: '15vh'}}>
             <Image src="images/download.svg" width={300} alt="This fancy image showed a 404 illustration" withPlaceholder placeholder={<Text align="center">This fancy image showed a 404 illustration</Text>}/>
-            <Title>Download The Ultimatum Client</Title>
+            <Title align="center">Download The Ultimatum Client</Title>
             <Title order={2}>Executables</Title>
-            <Group>
+            <Group position="center">
                 <Button variant="outline">
                     <Group>
                         Windows

@@ -11,6 +11,14 @@ const Layout = ({children}) => {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const theme = useMantineTheme();
 
+  const handleClose = (e) => {
+    if (e === false) {
+      return
+    }
+
+    setOpened(false)
+  }
+
   return (
     <>
       <Meta/>
@@ -33,13 +41,13 @@ const Layout = ({children}) => {
           >
             <Navbar.Section>
               <Title order={4}>API Routes</Title>
-              <Navbar.Section>
+              <Navbar.Section onClick={handleClose}>
                 <APILinks/>
               </Navbar.Section>
             </Navbar.Section>
             <Navbar.Section grow mt="lg">
               <Title order={4}>Navigation</Title>
-              <Navbar.Section>
+              <Navbar.Section onClick={handleClose}>
                 <PageLinks/>
               </Navbar.Section>
             </Navbar.Section>

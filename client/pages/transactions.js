@@ -1,5 +1,5 @@
 import Meta from '../components/Meta'
-import { TextInput, Checkbox, Button, Group, Box, Text, Title, Accordion } from '@mantine/core';
+import { TextInput, Checkbox, Button, Group, Box, Text, Title, Accordion, Grid } from '@mantine/core';
 import { useForm } from '@mantine/form';
 
 const Transactions = () => {
@@ -11,7 +11,6 @@ const Transactions = () => {
     },
 
     validate: {
-      senderAddress: (value) => (value.length == 130 ? null : 'Must be a valid wallet address with a length of 130 characters.'),
       recipientAddress: (value) => (value.length == 130 ? null : 'Must be a valid wallet address with a length of 130 characters.'),
       amount: (value) => (isNaN(value) ? 'Must be a number.' : null)
     },
@@ -33,29 +32,27 @@ const Transactions = () => {
             <Title order={4}>Create A Transaction</Title>
             <br/>
             <form onSubmit={createTransactionForm.onSubmit((values) => console.log(values))}>
-                <Group grow>
-                    <TextInput
-                    required
-                    label="Sender Address"
-                    placeholder="Sender Address"
-                    {...createTransactionForm.getInputProps('senderAddress')}
-                    />
+              <Grid align="center">
+                  <Grid.Col md={6} lg={6}> 
                     <TextInput
                         required
                         label="Recipient Address"
                         placeholder="Recipient Address"
                         {...createTransactionForm.getInputProps('recipientAddress')}
                     />
+                  </Grid.Col>
+                  <Grid.Col md={6} lg={6}>
                     <TextInput
                         required
                         label="Amount"
                         placeholder="Amount"
                         {...createTransactionForm.getInputProps('amount')}
                     />
-                </Group>
-                <Group position="right" mt="md">
-                    <Button type="submit">Transact</Button>
-                </Group>
+                  </Grid.Col>
+              </Grid>
+              <Group position="right" mt="md">
+                <Button type="submit">Transact</Button>
+              </Group>
             </form>
         </Box>
         <br/>

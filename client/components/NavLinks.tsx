@@ -7,15 +7,15 @@ interface MainLinkProps {
   icon: React.ReactNode;
   color: string;
   label: string;
-  href: string
+  href: string;
 }
 
 function MainLink({ icon, color, label, href }: MainLinkProps) {
-    const css = `
-    a {
-        color: inherit; /* blue colors for links too */
-        text-decoration: inherit; /* no underline */
-      }`
+  const css = `
+  a {
+      color: inherit; /* blue colors for links too */
+      text-decoration: inherit; /* no underline */
+    }`
 
   return (
     <>
@@ -24,26 +24,26 @@ function MainLink({ icon, color, label, href }: MainLinkProps) {
       </style>
         <Link href={`/${href}`} passHref>
             <UnstyledButton
-            sx={(theme) => ({
-                display: 'block',
-                width: '100%',
-                padding: theme.spacing.xs,
-                borderRadius: theme.radius.sm,
-                color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.black,
+              sx={(theme) => ({
+                  display: 'block',
+                  width: '100%',
+                  padding: theme.spacing.xs,
+                  borderRadius: theme.radius.sm,
+                  color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.black,
 
-                '&:hover': {
-                backgroundColor:
-                    theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
-                },
-            })}
+                  '&:hover': {
+                  backgroundColor:
+                      theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
+                  },
+              })}
             >
-            <Group>
-                <ThemeIcon color={color} variant="light">
-                {icon}
-                </ThemeIcon>
+              <Group>
+                  <ThemeIcon color={color} variant="light">
+                  {icon}
+                  </ThemeIcon>
 
-                <Text size="sm">{label}</Text>
-            </Group>
+                  <Text size="sm">{label}</Text>
+              </Group>
             </UnstyledButton>
         </Link>
     </>
@@ -59,7 +59,7 @@ const APIdata = [
 ];
 
 export function APILinks() {
-  const links = APIdata.map((link) => <MainLink {...link} key={link.label} />);
+  const links = APIdata.map((link) => <MainLink {...link} key={link.label}/>);
   return <div>{links}</div>;
 }
 

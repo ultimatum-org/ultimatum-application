@@ -91,21 +91,25 @@ const Home = () => {
                         </Grid.Col>
                     </Grid>
                     <Group position="center" direction="column" grow style={{paddingTop: '15vh', paddingBottom: '15vh'}}>
-                        <Title>Join The Team Today</Title>
-                        <Group grow>
-                            <Button variant="outline">
-                                <Group>
-                                    GitHub
-                                    <BrandGithub/>
-                                </Group>
-                            </Button>
-                            <Button variant="outline">
-                                <Group>
-                                    Contribute
-                                    <Messages/>
-                                </Group>
-                            </Button>
-                        </Group>
+                        <Title align="center">Join The Team Today</Title>
+                        <Grid align="center">
+                            <Grid.Col md={6} lg={6} align="center">
+                                <Button variant="outline">
+                                    <Group>
+                                        GitHub
+                                        <BrandGithub/>
+                                    </Group>
+                                </Button>
+                            </Grid.Col>
+                            <Grid.Col md={6} lg={6} align="center">
+                                <Button variant="outline">
+                                    <Group>
+                                        Contribute
+                                        <Messages/>
+                                    </Group>
+                                </Button>
+                            </Grid.Col>
+                        </Grid>
                     </Group>
                 </Group>
             </Box>

@@ -69,7 +69,7 @@ const Contribute = () => {
                     />
                 </Group>
                 <Group position="right" mt="md">
-                    <Button type="submit">Submit Contribution For Voting</Button>
+                    <Button type="submit">Post Contract</Button>
                 </Group>
             </form>
         </Box>
