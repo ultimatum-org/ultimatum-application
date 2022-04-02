@@ -1,7 +1,9 @@
-import { Title, Text, Button, Group, Image, Box, Container, Grid } from '@mantine/core'
+import { Title, Text, Button, Group, Image, Box, Container, Grid, useMantineTheme } from '@mantine/core'
 import { BrandGithub, Messages } from 'tabler-icons-react';
 
 const Home = () => {
+    const theme = useMantineTheme();
+
     return (
         <>
             <Box sx={{ maxWidth: '75vw' }} mx="auto">
@@ -16,7 +18,7 @@ const Home = () => {
                             <Image src="images/svg-1.svg" alt="A fancy graphic showing a yellow arrow" withPlaceholder placeholder={<Text align="center">A fancy graphic showing a yellow arrow</Text>}/>
                         </Grid.Col>
                         <Grid.Col md={6} lg={7}>
-                            <Text transform="uppercase" color="blue">A True DAO</Text>
+                            <Text transform="uppercase" color={theme.primaryColor} weight={500}>A True DAO</Text>
                             <Title>Building The Future</Title>
                             <Text>Invest in the future by contributing to an organization which puts the people&apos;s needs first.</Text>
                             <br/>
@@ -28,7 +30,7 @@ const Home = () => {
                             <Image src="images/svg-2.svg" alt="Two people sitting with computers" withPlaceholder placeholder={<Text align="center">Two people sitting with computers</Text>}/>
                         </Grid.Col>
                         <Grid.Col md={6} lg={7}>
-                            <Text transform="uppercase" color="blue">Open Source</Text>
+                            <Text transform="uppercase" color={theme.primaryColor} weight={500}>Open Source</Text>
                             <Title>Know Everything</Title>
                             <Text>Fully transparent and open source organization dedicated to your security and privacy.</Text>
                             <br/>
@@ -81,7 +83,7 @@ const Home = () => {
                             <Image src="images/svg-4.svg" alt="A group of people connecting over the internet" withPlaceholder placeholder={<Text align="center">A group of people connecting over the internet</Text>}/>
                         </Grid.Col>
                         <Grid.Col md={6} lg={7}>
-                            <Text transform="uppercase" color="blue">Web 3.0</Text>
+                            <Text transform="uppercase" color={theme.primaryColor} weight={500}>Web 3.0</Text>
                             <Title>Learn Web 3.0 With The Community</Title>
                             <Text>See the power of Web 3.0 in action with the Ultimatum community and decentralized development platform.</Text>
                             <br/>
