@@ -40,15 +40,15 @@ const Layout = ({children}) => {
             width={{ sm: 300, lg: 400 }}
           >
             <Navbar.Section>
-              <Title order={4}>API Routes</Title>
-              <Navbar.Section onClick={handleClose}>
-                <APILinks/>
-              </Navbar.Section>
-            </Navbar.Section>
-            <Navbar.Section grow mt="lg">
               <Title order={4}>Navigation</Title>
               <Navbar.Section onClick={handleClose}>
                 <PageLinks/>
+              </Navbar.Section>
+            </Navbar.Section>
+            <Navbar.Section grow mt="lg">
+              <Title order={4}>API Routes</Title>
+              <Navbar.Section onClick={handleClose}>
+                <APILinks/>
               </Navbar.Section>
             </Navbar.Section>
             <Navbar.Section>
