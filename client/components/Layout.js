@@ -5,6 +5,7 @@ import { AppShell, ActionIcon, Burger, Header, MediaQuery, Navbar, Text, useMant
 import {Title} from '@mantine/core'
 import {APILinks, PageLinks} from './NavLinks'
 import Logo from './Logo'
+import Account from './Account'
 
 const Layout = ({children}) => {
   const [opened, setOpened] = useState(false);
@@ -52,7 +53,7 @@ const Layout = ({children}) => {
               </Navbar.Section>
             </Navbar.Section>
             <Navbar.Section>
-              <Text>Ultimatum &copy; Ultimatum Head</Text>
+              <Account/>
             </Navbar.Section>
           </Navbar>
         }
