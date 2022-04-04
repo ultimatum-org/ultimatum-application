@@ -1,19 +1,23 @@
 import { Group, Text, Box, Avatar, UnstyledButton, useMantineTheme, Modal, TextInput, Button } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ChevronRight, ChevronLeft } from 'tabler-icons-react'
 
 const Account = () => {
     const theme = useMantineTheme();
     const [opened, setOpened] = useState(false);
+    const [data, setData] = useState(null)
+    const [isLoading, setLoading] = useState(false)
 
     const signIn = useForm({
         initialValues: {
         publicKey: '',
+        localPort: ''
         },
 
         validate: {
             publicKey: (value) => (value.length == 130 ? null : 'Must be a valid public key with a length of 130 characters.'),
+            localPort: (value) => (value < 65535 && value > 1023 ? null : 'Must be a valid port number from 1023 to 65535')
     }});
 
     const signedIn = false
@@ -21,13 +25,26 @@ const Account = () => {
     return (
         <>
             <Modal opened={opened} onClose={() => setOpened(false)} title="Login to Ultimatum">
-                <form onSubmit={signIn.onSubmit((values) => console.log(values))}>
+                <form onSubmit={signIn.onSubmit((values) => 
+                    fetch(`localhost:${values.localPort}/public-key`)
+                        .then((res) => res.json())
+                        .then((data) => {
+                        setData(data)
+                        console.log(data)
+                        })
+                    )}>
                     <Group grow direction="column">
                         <TextInput
                             required
                             label="Public Key"
                             placeholder="Public Key"
                             {...signIn.getInputProps('publicKey')}
+                        />
+                        <TextInput
+                            required
+                            label="Local Port"
+                            placeholder="Local Port"
+                            {...signIn.getInputProps('localPort')}
                         />
                     </Group>
                     <Group position="right" mt="md">
