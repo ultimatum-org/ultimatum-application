@@ -1,4 +1,5 @@
 const express = require('express');
+const { createVerify } = require('crypto')
 const cors = require('cors');
 const bodyParser = require('body-parser')
 const Blockchain = require('../blockchain')
@@ -6,6 +7,7 @@ const P2pServer = require('./p2p-server')
 const Wallet = require('../wallet')
 const TransactionPool = require('../wallet/transaction-pool')
 const Miner = require('./miner')
+const ChainUtil = require('../chain-util')
 
 const HTTP_PORT = process.env.HTTP_PORT || 3001
 
@@ -25,6 +27,17 @@ app.get('/', (req, res) => {
 
 app.get('/blocks', (req, res) => {
     res.json(blockchain.chain)
+})
+
+app.post('/sign', (req, res) => {
+    const message = ChainUtil.hash("aaa")
+    const signature = wallet.sign(message)
+
+    console.log(ChainUtil.verifySignature(req.body.publicKey, signature, message))
+    //console.log(ChainUtil.verifySignature(req.body.publicKey, signature, message))
+    //console.log(signature)
+
+    res.send(ChainUtil.verifySignature(req.body.publicKey, signature, message))
 })
 
 app.post('/mine', (req, res) => {
