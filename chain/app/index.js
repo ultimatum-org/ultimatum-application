@@ -1,4 +1,5 @@
 const express = require('express');
+const axios = require('axios');
 const { createVerify } = require('crypto')
 const cors = require('cors');
 const bodyParser = require('body-parser')
@@ -33,11 +34,24 @@ app.post('/sign', (req, res) => {
     const message = ChainUtil.hash("aaa")
     const signature = wallet.sign(message)
 
-    console.log(ChainUtil.verifySignature(req.body.publicKey, signature, message))
-    //console.log(ChainUtil.verifySignature(req.body.publicKey, signature, message))
-    //console.log(signature)
-
     res.send(ChainUtil.verifySignature(req.body.publicKey, signature, message))
+})
+
+app.post('/login', (req, res) => {
+    const publicKey = req.body.publicKey
+    
+    const message = ChainUtil.hash("aaa")
+    const signature = wallet.sign(message)
+
+    if(ChainUtil.verifySignature(req.body.publicKey, signature, message)) {
+        axios.post('http://localhost:3000/api/login', {
+            publicKey: publicKey
+        }).then(response => {
+            res.send({ "publicKey": response.data.publicKey })
+        })
+    } else {
+        res.send('You do not own this wallet address!')
+    }
 })
 
 app.post('/mine', (req, res) => {
