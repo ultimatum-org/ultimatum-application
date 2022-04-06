@@ -9,7 +9,7 @@ const Wallet = () => {
     },
 
     validate: {
-      walletAddress: (value) => (value.length == 130 ? null : value.length),
+      walletAddress: (value) => (value.length == 130 ? null : 'Must be a valid wallet address with a length of 130 characters.'),
     },
   });
 

@@ -5,6 +5,7 @@ import { MantineProvider, ColorSchemeProvider, ColorScheme } from '@mantine/core
 import { useLocalStorageValue } from '@mantine/hooks'
 
 export default function App(props: AppProps) {
+
   const [colorScheme, setColorScheme] = useLocalStorageValue<ColorScheme>({
     key: 'mantine-color-scheme',
     defaultValue: 'dark',
