@@ -69,7 +69,7 @@ const Pagedata = [
     { icon: <Messages size={16} />, color: 'violet', label: 'Forum (Coming soon)', href: 'forum' },
   ];
   
-  export function PageLinks() {
-    const links = Pagedata.map((link) => <MainLink {...link} key={link.label} />);
-    return <div>{links}</div>;
-  }
+export function PageLinks() {
+  const links = Pagedata.map((link) => <MainLink {...link} key={link.label} />);
+  return <div>{links}</div>;
+}
