@@ -43,11 +43,16 @@ app.post('/login', (req, res) => {
     const message = ChainUtil.hash("aaa")
     const signature = wallet.sign(message)
 
+    const hash = ChainUtil.hash(publicKey + Date.now())
+
     if(ChainUtil.verifySignature(req.body.publicKey, signature, message)) {
         axios.post('http://localhost:3000/api/login', {
-            publicKey: publicKey
+            publicKey: publicKey,
+            hash: hash
         }).then(response => {
-            res.send({ "publicKey": response.data.publicKey })
+            res.send({ 
+                "login": response.data.login
+            })
         })
     } else {
         res.send('You do not own this wallet address!')
