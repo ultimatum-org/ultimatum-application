@@ -1,7 +1,7 @@
 const fs = require('fs');
 const config = require('../../config')
 
-let users = require('../../users.json')
+let users = require('../../data/users.json')
 
 const handler = (req, res) => {
     if(req.method !== 'POST') {
@@ -21,7 +21,7 @@ const handler = (req, res) => {
         users.push(user);
 
         console.log(users)
-        fs.writeFile("../../users.json", JSON.stringify(users), 'utf8', function (err) {
+        fs.writeFileSync("data/users.json", JSON.stringify(users), 'utf8', function (err) {
             if (err) {
                 return console.log(err)
             }

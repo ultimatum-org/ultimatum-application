@@ -1,15 +1,28 @@
 import { useRouter } from 'next/router'
-let users = require('../users.json')
+let users = require('../data/users.json')
 
 const Login = () => {
-    const router = useRouter()
-    const {ref} = router.query
+    const { query } = useRouter()
 
-    console.log(users)
+    function publicKey() {
+        if(typeof users.find(item => item.hash === query.ref) !== 'undefined') {
+            return(users.find(item => item.hash === query.ref).publicKey)
+        } else {
+            setTimeout(publicKey, 250)
+        }
+    }
+
+    function display(key) {
+        if(typeof key === 'undefined') {
+            return("Invalid login")
+        } else {
+            return(key)
+        }
+    }
 
     return(
         <div>
-            {users.find(item => item.hash === ref).publicKey}
+            {display(publicKey())}
         </div>
     )
 }
