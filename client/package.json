@@ -14,9 +14,11 @@
     "@mantine/form": "^4.0.8",
     "@mantine/next": "^4.0.8",
     "@modulz/radix-icons": "^4.0.0",
+    "iron-session": "^6.1.2",
     "js-cookie": "^3.0.1",
     "next": "12.1.0",
     "next-auth": "^4.3.1",
+    "next-iron-session": "^4.2.0",
     "next-session": "^4.0.4",
     "react": "17.0.2",
     "react-dom": "17.0.2",
@@ -24,6 +26,7 @@
     "react-router-dom": "^6.2.2",
     "react-scroll": "^1.8.6",
     "styled-components": "^5.3.5",
+    "swr": "^1.2.2",
     "tabler-icons-react": "^1.41.0"
   },
   "devDependencies": {

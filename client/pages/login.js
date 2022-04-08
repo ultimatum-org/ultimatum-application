@@ -2,6 +2,7 @@ import { Notification } from '@mantine/core'
 import { Check, X } from 'tabler-icons-react'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
+import cookie from 'js-cookie'
 let users = require('../data/users.json')
 
 const Login = () => {
@@ -16,6 +17,15 @@ const Login = () => {
         }
     }
 
+    function personalHash(key) {
+        if(typeof users.find(item => item.publicKey === key) !== 'undefined') {
+            console.log(users)
+            return(users.find(item => item.publicKey === key).hash)
+        } else {
+            setTimeout(publicKey, 250)
+        }
+    }
+
     function display(key) {
         if(typeof key === 'undefined') {
             return(
@@ -24,6 +34,8 @@ const Login = () => {
                 </Notification>
             )
         } else {
+            cookie.set("personalHash", personalHash(key), {expires: 1/24})
+
             return(
                 <Notification disallowClose icon={<Check size={18}/>} color="teal" title="Success!">
                     Successfully signed in on public key: {key}
@@ -42,7 +54,7 @@ const Login = () => {
         <div>
             {display(publicKey())}
         </div>
-    )
+    )    
 }
 
 export default Login
