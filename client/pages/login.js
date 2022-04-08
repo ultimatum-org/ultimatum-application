@@ -2,8 +2,17 @@ import { Notification } from '@mantine/core'
 import { Check, X } from 'tabler-icons-react'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
-import cookie from 'js-cookie'
 let users = require('../data/users.json')
+
+import Cookies from 'js-cookie';
+
+/* middleware */
+import {
+  absoluteUrl,
+  getAppCookies,
+  verifyToken,
+  setLogout,
+} from '../middleware/utils';
 
 const Login = () => {
     const { query } = useRouter()
