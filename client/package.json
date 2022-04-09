@@ -14,7 +14,10 @@
     "@mantine/form": "^4.0.8",
     "@mantine/next": "^4.0.8",
     "@modulz/radix-icons": "^4.0.0",
+    "axios": "^0.26.1",
     "bcryptjs": "^2.4.3",
+    "cookie": "^0.4.2",
+    "express-jwt": "^6.1.1",
     "iron-session": "^6.1.2",
     "js-cookie": "^3.0.1",
     "jsonwebtoken": "^8.5.1",
@@ -27,6 +30,7 @@
     "react-icons": "^4.3.1",
     "react-router-dom": "^6.2.2",
     "react-scroll": "^1.8.6",
+    "rxjs": "^7.5.5",
     "styled-components": "^5.3.5",
     "swr": "^1.2.2",
     "tabler-icons-react": "^1.41.0"

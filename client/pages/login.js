@@ -1,37 +1,26 @@
-import { Notification } from '@mantine/core'
+import { Notification, Button } from '@mantine/core'
 import { Check, X } from 'tabler-icons-react'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
+import axios from 'axios'
 let users = require('../data/users.json')
 
-import Cookies from 'js-cookie';
-
-/* middleware */
-import {
-  absoluteUrl,
-  getAppCookies,
-  verifyToken,
-  setLogout,
-} from '../middleware/utils';
+import cookie from 'js-cookie';
 
 const Login = () => {
     const { query } = useRouter()
     const router = useRouter()
 
-    function publicKey() {
-        if(typeof users.find(item => item.hash === query.ref) !== 'undefined') {
-            return(users.find(item => item.hash === query.ref).publicKey)
-        } else {
-            setTimeout(publicKey, 250)
-        }
-    }
-
-    function personalHash(key) {
-        if(typeof users.find(item => item.publicKey === key) !== 'undefined') {
-            console.log(users)
-            return(users.find(item => item.publicKey === key).hash)
-        } else {
-            setTimeout(publicKey, 250)
+    function getPublicKey() {
+        try {
+            if(typeof users.find(item => item.hash === query.ref) !== 'undefined') {
+                return(users.find(item => item.hash === query.ref).publicKey)
+            } else {
+                setTimeout(getPublicKey, 250)
+            }
+        } catch {
+            console.log("Invalid URL")
+            return("")
         }
     }
 
@@ -43,7 +32,7 @@ const Login = () => {
                 </Notification>
             )
         } else {
-            cookie.set("personalHash", personalHash(key), {expires: 1/24})
+            cookie.set("personalHash", getHash(key), {expires: 1/24})
 
             return(
                 <Notification disallowClose icon={<Check size={18}/>} color="teal" title="Success!">
@@ -53,15 +42,32 @@ const Login = () => {
         }
     }
 
-    useEffect(() => {
-        setTimeout(() => {
-            router.push('/')
-        }, 3000)
-    }, [])
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const publicKey = getPublicKey()
+        const hash = query.ref
+
+        const credentials = { publicKey, hash }
+
+        try {
+            const user = await axios.post('/api/auth/login', credentials)
+            console.log(user)
+        } catch {
+            console.log("Something went wrong")
+        }
+    }
+
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         router.push('/')
+    //     }, 3000)
+    // }, [])
 
     return(
         <div>
-            {display(publicKey())}
+            <Button onClick={e => handleSubmit(e)}/>
+            {/* {display(getPublicKey())} */}
         </div>
     )    
 }

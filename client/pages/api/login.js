@@ -29,7 +29,11 @@ const handler = (req, res) => {
             console.log("JSON file has been saved")
         })
 
-        res.status(200).json({ login: `${config.server}/login?ref=${req.body.hash}` });
+        console.log(req.body.oneTimeKey)
+
+        res.status(200).json({ 
+            login: `${config.server}/login?ref=${req.body.hash}`
+        });
     } catch (error) {
         console.log(error)
     }

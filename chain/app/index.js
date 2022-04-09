@@ -43,7 +43,7 @@ app.post('/login', (req, res) => {
     const message = ChainUtil.hash("aaa")
     const signature = wallet.sign(message)
 
-    const hash = ChainUtil.hash(publicKey + Date.now())
+    const hash = ChainUtil.hash(publicKey + signature + Date.now())
 
     if(ChainUtil.verifySignature(req.body.publicKey, signature, message)) {
         axios.post('http://localhost:3000/api/login', {
@@ -51,7 +51,7 @@ app.post('/login', (req, res) => {
             hash: hash
         }).then(response => {
             res.send({ 
-                "login": response.data.login
+                "login": response.data.login,
             })
         })
     } else {
