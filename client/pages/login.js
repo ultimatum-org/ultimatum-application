@@ -32,7 +32,7 @@ const Login = () => {
                 </Notification>
             )
         } else {
-            cookie.set("personalHash", getHash(key), {expires: 1/24})
+            cookie.set("personalHash", query.ref, {expires: 1/24})
 
             return(
                 <Notification disallowClose icon={<Check size={18}/>} color="teal" title="Success!">
@@ -58,6 +58,18 @@ const Login = () => {
         }
     }
 
+    const handleGetUser = async () => {
+        const user = await axios.get('/api/auth/user')
+
+        console.log(user)
+    }
+
+    const handleLogout = async () => {
+        const user = await axios.get('/api/auth/logout')
+
+        console.log(user)
+    }
+
     // useEffect(() => {
     //     setTimeout(() => {
     //         router.push('/')
@@ -67,6 +79,8 @@ const Login = () => {
     return(
         <div>
             <Button onClick={e => handleSubmit(e)}/>
+            <Button onClick={() => handleGetUser()}/>
+            <Button onClick={() => handleLogout()}/>
             {/* {display(getPublicKey())} */}
         </div>
     )    
