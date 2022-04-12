@@ -13,23 +13,15 @@ const Account = () => {
 
     //For some stupid reason this doesnt work half the time and the user is set to undefined so this user variable can't be used. FIX THIS PLEASE
 
-    function getUser() {
-        try {
-            const userObject = axios.post('/api/auth/verify').then(
-                result => {
-                    signedIn = true
-                    const user = result.data.publicKey
-                    console.log(user)
-                    //return(result.data.publicKey)
-                }
-            )
-        } catch (e) {
-            console.log(e)
-            signedIn = false
-        }
+    async function getUser() {
+        const userObject = await fetch('/api/auth/verify')
+        const user = await userObject.json()
+        const key = await user.publicKey
+        return(key)
     }
 
-    const user = getUser()
+    let user = getUser()
+    console.log(user)
 
     //console.log(user)
 
@@ -55,7 +47,7 @@ const Account = () => {
                         whiteSpace: 'nowrap',
                         textOverflow: 'ellipsis'
                     }}>
-                        {user}
+                        {/* {user} */}
                     </Text>
                     <Button variant="outline" color="red" onClick={() => {cookie.remove("personalHash")}}>Logout</Button>
                 </Group>
@@ -97,7 +89,7 @@ const Account = () => {
                                     whiteSpace: 'nowrap',
                                     textOverflow: 'ellipsis'
                                 }}>
-                                    {user}
+                                    {/* {user} */}
                                 </Text>
                                 <Text color="dimmed" size="xs">
                                     Successfully signed in!
