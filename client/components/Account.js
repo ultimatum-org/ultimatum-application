@@ -2,27 +2,36 @@ import { Group, Text, Box, Avatar, UnstyledButton, useMantineTheme, Modal, List,
 import { useState, useEffect } from 'react'
 import { ChevronRight, ChevronLeft, Download } from 'tabler-icons-react'
 import cookie from 'js-cookie'
-
-let users = require('../data/users.json')
-
-function getUser(hash) {
-    if(typeof users.find(item => item.hash === hash) !== 'undefined') {
-        return(users.find(item => item.hash === hash).publicKey)
-    } else {
-        setTimeout(getUser, 250)
-    }
-}
+import axios from 'axios'
 
 const Account = () => {
     const theme = useMantineTheme();
     const [instructions, setInstructions] = useState(false);
     const [settings, setSettings] = useState(false);
 
-    const signedIn = false
+    var signedIn = false
 
-    if(typeof cookie.get('personalHash') !== 'undefined') {
-        signedIn = true
+    //For some stupid reason this doesnt work half the time and the user is set to undefined so this user variable can't be used. FIX THIS PLEASE
+
+    function getUser() {
+        try {
+            const userObject = axios.post('/api/auth/verify').then(
+                result => {
+                    signedIn = true
+                    const user = result.data.publicKey
+                    console.log(user)
+                    //return(result.data.publicKey)
+                }
+            )
+        } catch (e) {
+            console.log(e)
+            signedIn = false
+        }
     }
+
+    const user = getUser()
+
+    //console.log(user)
 
     return (
         <>
@@ -46,7 +55,7 @@ const Account = () => {
                         whiteSpace: 'nowrap',
                         textOverflow: 'ellipsis'
                     }}>
-                        {getUser(cookie.get("personalHash"))}
+                        {user}
                     </Text>
                     <Button variant="outline" color="red" onClick={() => {cookie.remove("personalHash")}}>Logout</Button>
                 </Group>
@@ -88,7 +97,7 @@ const Account = () => {
                                     whiteSpace: 'nowrap',
                                     textOverflow: 'ellipsis'
                                 }}>
-                                    {getUser(cookie.get("personalHash"))}
+                                    {user}
                                 </Text>
                                 <Text color="dimmed" size="xs">
                                     Successfully signed in!
