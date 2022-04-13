@@ -2,28 +2,36 @@ import { Group, Text, Box, Avatar, UnstyledButton, useMantineTheme, Modal, List,
 import { useState, useEffect } from 'react'
 import { ChevronRight, ChevronLeft, Download } from 'tabler-icons-react'
 import cookie from 'js-cookie'
+import { useStateIfMounted } from 'use-state-if-mounted'
 import axios from 'axios'
 
 const Account = () => {
     const theme = useMantineTheme();
     const [instructions, setInstructions] = useState(false);
     const [settings, setSettings] = useState(false);
+    const [user, setUser] = useStateIfMounted(0)
+    const [isLoading, setLoading] = useStateIfMounted(0)
 
-    var signedIn = false
+    useEffect(() => {
+        setLoading(true)
+        fetch('api/auth/verify')
+        .then((res) => res.json())
+        .then((user) => {
+            setUser(user)
+            setLoading(false)
+        }).catch((err) => {
+            setLoading(false)
+            setUser("")
+        })
+    }, [])
 
-    //For some stupid reason this doesnt work half the time and the user is set to undefined so this user variable can't be used. FIX THIS PLEASE
+    const handleLogout = async () => {
+        const user = await axios.get('/api/auth/logout')
 
-    async function getUser() {
-        const userObject = await fetch('/api/auth/verify')
-        const user = await userObject.json()
-        const key = await user.publicKey
-        return(key)
+        console.log(user)
     }
 
-    let user = getUser()
-    console.log(user)
-
-    //console.log(user)
+    if (isLoading) return <p>Loading...</p>
 
     return (
         <>
@@ -47,9 +55,9 @@ const Account = () => {
                         whiteSpace: 'nowrap',
                         textOverflow: 'ellipsis'
                     }}>
-                        {/* {user} */}
+                        {user.publicKey}
                     </Text>
-                    <Button variant="outline" color="red" onClick={() => {cookie.remove("personalHash")}}>Logout</Button>
+                    <Button variant="outline" color="red" onClick={() => {handleLogout()}}>Logout</Button>
                 </Group>
                 <Group position="right" mt="md">
                     <Button type="submit" onClick={() => setSettings(false)}>Close</Button>
@@ -63,7 +71,7 @@ const Account = () => {
                     }`,
                 }}
             >
-                { signedIn ? (
+                { user ? (
                     <UnstyledButton
                         onClick={() => setSettings(true)}
 
@@ -89,7 +97,7 @@ const Account = () => {
                                     whiteSpace: 'nowrap',
                                     textOverflow: 'ellipsis'
                                 }}>
-                                    {/* {user} */}
+                                    {user.publicKey}
                                 </Text>
                                 <Text color="dimmed" size="xs">
                                     Successfully signed in!
