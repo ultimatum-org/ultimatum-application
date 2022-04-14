@@ -16,8 +16,6 @@ function Account ({ user }) {
 
     // if (isLoading) return <p>Loading...</p>
 
-    console.log(user)
-
     return (
         <>
             <Modal opened={instructions} onClose={() => setInstructions(false)} title="Login to Ultimatum">

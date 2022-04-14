@@ -1,9 +1,8 @@
-import { GetStaticProps } from 'next'
 import Layout from '../components/Layout'
 import Meta from '../components/Meta'
 import { MantineProvider, ColorSchemeProvider, ColorScheme } from '@mantine/core';
 import { useLocalStorage } from '@mantine/hooks'
-import { ChevronsDownLeft } from 'tabler-icons-react';
+import { useEffect, useState } from 'react';
 
 export default function App({ Component, pageProps }) {
   const [colorScheme, setColorScheme] = useLocalStorage({
@@ -15,18 +14,23 @@ export default function App({ Component, pageProps }) {
     setColorScheme((colorScheme) => (colorScheme === 'dark' ? 'light' : 'dark'))
   }
 
+  const [user, setUser] = useState(0)
+
   //DOESNT WORK
 
-  const user = fetch('api/auth/verify')
-  .then((res) => res.json())
-  .then((user) => {
-      console.log(user)
-      return user
-  }).catch((err) => {
-    console.log(err)
-  })
-
-  console.log(Component)
+  useEffect(() => {
+    try {
+      fetch('api/auth/verify')
+      .then((res) => res.json())
+      .then((user) => {
+          setUser(user)
+      }).catch((err) => {
+        setUser(0)
+      })
+    } catch {
+      setUser(0)
+    }
+  }, [user])
 
   return (
     <>
@@ -40,7 +44,7 @@ export default function App({ Component, pageProps }) {
             primaryColor: 'yellow'
           }}
         >
-          <Layout user={"USer"}>
+          <Layout user={user}>
             <Component {...pageProps} />
           </Layout>
         </MantineProvider>
