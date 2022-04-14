@@ -7,7 +7,7 @@ import {APILinks, PageLinks} from './NavLinks'
 import Logo from './Logo'
 import Account from './Account'
 
-const Layout = ({children}) => {
+const Layout = ({children, user}) => {
   const [opened, setOpened] = useState(false);
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const theme = useMantineTheme();
@@ -53,7 +53,7 @@ const Layout = ({children}) => {
               </Navbar.Section>
             </Navbar.Section>
             <Navbar.Section>
-              <Account/>
+              <Account user={user}/>
             </Navbar.Section>
           </Navbar>
         }

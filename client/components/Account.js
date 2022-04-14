@@ -1,37 +1,22 @@
 import { Group, Text, Box, Avatar, UnstyledButton, useMantineTheme, Modal, List, Button, Anchor } from '@mantine/core';
 import { useState, useEffect } from 'react'
 import { ChevronRight, ChevronLeft, Download } from 'tabler-icons-react'
-import cookie from 'js-cookie'
 import { useStateIfMounted } from 'use-state-if-mounted'
 import axios from 'axios'
 
-const Account = () => {
+function Account ({ user }) {
     const theme = useMantineTheme();
     const [instructions, setInstructions] = useState(false);
     const [settings, setSettings] = useState(false);
-    const [user, setUser] = useStateIfMounted(0)
-    const [isLoading, setLoading] = useStateIfMounted(0)
-
-    useEffect(() => {
-        setLoading(true)
-        fetch('api/auth/verify')
-        .then((res) => res.json())
-        .then((user) => {
-            setUser(user)
-            setLoading(false)
-        }).catch((err) => {
-            setLoading(false)
-            setUser("")
-        })
-    }, [])
+    // const [isLoading, setLoading] = useStateIfMounted(0)
 
     const handleLogout = async () => {
         const user = await axios.get('/api/auth/logout')
-
-        console.log(user)
     }
 
-    if (isLoading) return <p>Loading...</p>
+    // if (isLoading) return <p>Loading...</p>
+
+    console.log(user)
 
     return (
         <>
