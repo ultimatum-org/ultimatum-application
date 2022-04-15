@@ -42,9 +42,7 @@ const Login = () => {
         }
     }
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
+    const handleSubmit = async () => {
         const publicKey = getPublicKey()
         const hash = query.ref
 
@@ -70,18 +68,15 @@ const Login = () => {
         console.log(user)
     }
 
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         router.push('/')
-    //     }, 3000)
-    // }, [])
+    useEffect(() => {
+        handleSubmit()
+        setTimeout(() => {
+            router.push('/')
+        }, 3000)
+    }, [])
 
     return(
         <div>
-            <Button onClick={e => handleSubmit(e)}/>
-            <Button onClick={() => handleGetUser()}/>
-            <Button onClick={() => handleLogout()}/>
-            {/* {display(getPublicKey())} */}
         </div>
     )    
 }

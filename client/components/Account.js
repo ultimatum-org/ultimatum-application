@@ -40,7 +40,10 @@ function Account ({ user }) {
                     }}>
                         {user.publicKey}
                     </Text>
-                    <Button variant="outline" color="red" onClick={() => {handleLogout()}}>Logout</Button>
+                    <Button variant="outline" color="red" onClick={() => {
+                        handleLogout()
+                        setSettings(false)
+                    }}>Logout</Button>
                 </Group>
                 <Group position="right" mt="md">
                     <Button type="submit" onClick={() => setSettings(false)}>Close</Button>

@@ -22,8 +22,9 @@ export default function App({ Component, pageProps }) {
     try {
       fetch('api/auth/verify')
       .then((res) => res.json())
-      .then((user) => {
-          setUser(user)
+      .then((newUser) => {
+        setUser(newUser)
+        // @refresh reset
       }).catch((err) => {
         setUser(0)
       })
